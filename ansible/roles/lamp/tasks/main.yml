@@ -1,0 +1,12 @@
+---
+ - name:  install Apache
+   apt: 
+     name=apache2 state=latest
+
+ - name:  install PHP module for Apache
+   apt:
+     name=php state=latest
+
+ - name:  start Apache
+   service:
+     name=apache2 state=started enabled=yes
