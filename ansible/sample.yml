@@ -4,5 +4,7 @@
   vars:
     version: 150
   roles:
-   - lamp
-   - bash-install
+  # - lamp
+  # - bash-install
+  # - docker
+   - docker_container

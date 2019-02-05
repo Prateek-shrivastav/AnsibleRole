@@ -1,0 +1,6 @@
+ - name: Ensure web based hello world container is running
+   docker_container:
+     name: Deploy docker image
+     image: /docker_image/nagix_docker
+     ports:
+       - 80:80

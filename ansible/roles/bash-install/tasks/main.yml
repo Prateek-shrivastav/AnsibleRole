@@ -1,2 +1,21 @@
 - name: run cammand
-  command: echo "Hello workd - {{ version }}"
+  command: echo "Hello world - {{ version }}"
+
+- template:
+    src: apache2/apache2.conf.j2
+    dest: /etc/apache2/apache2.conf
+    mode: 0644
+    owner: root
+    group: root
+
+- copy:
+    src: apache2.conf.txt
+    dest: /etc/apache2.conf.txt
+    mode: 0644
+    owner: root
+    group: root
+    force: yes
+    
+
+
+
