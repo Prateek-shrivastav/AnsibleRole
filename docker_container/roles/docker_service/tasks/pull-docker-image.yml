@@ -1,0 +1,23 @@
+# push docker image Into docker hub
+- name: Tag and push to docker hub
+  docker_image:
+    name: nginx_image
+    repository: prateek/nginx_image:latest
+    push: yes
+    
+# Pull Image from Docker hub
+- name: pull docker image
+  docker_image:
+    name: prateeksw05/nginx_image
+    tag: latest
+
+# Run Docker image
+- name: Running the container
+  docker_container:
+    name: mynginx
+    image: prateeksw05/nginx_image
+    state: started
+
+#run docker image a particular host
+- name: Run Docker image
+  shell:  docker run -dp 8080:80 prateeksw05/nginx_image:latest
