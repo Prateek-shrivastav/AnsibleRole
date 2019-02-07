@@ -1,0 +1,34 @@
+- name: LogdockerfileerHub
+  docker_login:
+    username: prateeksw05
+    password: pass1234
+
+- template:
+    src: docker/Dockerfile
+    dest: /etc/docker_image
+    mode: 0644
+    owner: root
+    group: root
+
+# Build Docker Image
+- name: build dockerfile
+  docker_image: 
+    path=/etc/docker_image
+    name=java_tomcat
+    tag=latest
+    state=present
+
+# Run Docker image
+- name: Running the container
+  docker_container:
+    name: java_tomcat
+    image: java_tomcat
+    state: started
+
+# - name: Execute dockerfile
+#   shell: docker build .
+#   shell: docker build -t java_tomcat:latest
+#   shell: docker run -it java_tomcat:latest /bin/bash
+#   shell: docker run -dp 8080:80 java_tomcat:latest
+#   args:
+#     chdir: Dockerfile

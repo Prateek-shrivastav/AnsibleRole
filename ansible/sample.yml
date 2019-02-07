@@ -5,7 +5,7 @@
     version: 150
   roles:
   # - lamp
-  # - bash-install
+   - bash-install
   # - docker
   # - docker_container
    - docker_service
