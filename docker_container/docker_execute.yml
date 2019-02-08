@@ -1,6 +1,0 @@
-- hosts: localhost
-  become: yes
-  vars:
-    version: 150
-  roles:
-   - docker_service

@@ -1,0 +1,50 @@
+- name: Log docker file Hub
+  docker_login:
+    username: prateeksw05
+    password: pass1234
+
+- name: Create a directory
+  file:
+    path: /etc/JavaApplication
+    state: directory
+
+- template:
+    src: docker/Dockerfile
+    dest: /etc/JavaApplication/Dockerfile
+    mode: 0644
+    owner: root
+    group: root
+
+- template:
+    src: docker/FirstProgram.java
+    dest: /etc/JavaApplication/FirstProgram.java
+    mode: 0644
+    owner: root
+    group: root
+
+# Build Docker Image
+- name: build dockerfile
+  docker_image: 
+    path=/etc/JavaApplication/
+    name=java_app
+    tag=latest
+    state=present
+
+- name: Compile java Application
+  shell: javac FirstProgram.java
+  args:
+    chdir: /etc/JavaApplication/
+
+- name: Run java Application
+  shell: java FirstProgram
+  args:
+    chdir: /etc/JavaApplication/
+ 
+# CMD ["java", "FirstProgram"]
+
+# Run Docker image
+# - name: Running the container
+#   docker_container:
+#     name: java_app
+#     image: java_app
+#     state: started

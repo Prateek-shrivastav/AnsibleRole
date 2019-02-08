@@ -1,6 +1,4 @@
 - hosts: localhost
   become: yes
-  vars:
-    version: 150
   roles:
-   - java
+   - docker_service
