@@ -1,4 +1,7 @@
-et -ex
+
+#!/bin/bash
+
+set -ex
 
 ansible_version=$1
 
