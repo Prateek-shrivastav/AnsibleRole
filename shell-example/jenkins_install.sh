@@ -19,4 +19,6 @@ sudo yum install jenkins-${jenkins_version}
 # jenkins start
 sudo service jenkins start
 sudo chkconfig jenkins on
+
+# port 8443
 sudo iptables -I INPUT 1 -p tcp --dport 8443 -j ACCEPT
