@@ -1,0 +1,17 @@
+ - name: Update all packages to the latest version
+   apt:
+     upgrade: dist
+
+- name: Download tomcat
+  get_url: url=http://mirrors.up.pt/pub/apache/tomcat/tomcat-9/v9.0.1/bin/apache-tomcat-9.0.1-fulldocs.tar.gz dest=/opt/apache-tomcat-9.0.1.tar.gz
+
+- name: Unarchive a file that is already on the remote machine
+  unarchive:
+   src: /opt/apache-tomcat-9.0.1.tar.gz
+   dest: /opt/
+   remote_src: yes
+
+- name: Run Tomcat
+  shell: ./startup.sh
+  args:
+    chdir: /opt/apache-tomcat-9.0.1/bin
