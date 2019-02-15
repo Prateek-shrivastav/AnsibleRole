@@ -1,6 +1,4 @@
-
 - hosts: localhost
   become: yes
   roles:
-   - ansible_docker_install
-  
+   - docker_install  
