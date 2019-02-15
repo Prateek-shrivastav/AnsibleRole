@@ -1,0 +1,9 @@
+
+debug: {{ ansible_os_family }}
+
+
+# - include_tasks: ubuntu.yml
+#   when: ansible_os_family == "Ubuntu"
+
+# - include_tasks: centos.yml
+#   when: ansible_os_family == "CentOS"

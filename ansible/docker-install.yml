@@ -1,7 +1,6 @@
+
 - hosts: localhost
   become: yes
-  vars:
-    version: 150
   roles:
-   - docker
-
+   - ansible_docker_install
+  
