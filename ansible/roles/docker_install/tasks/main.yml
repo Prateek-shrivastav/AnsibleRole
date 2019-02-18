@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 ---
  - include: ubuntu.yml
    when: ansible_distribution == "Ubuntu"
 
  - include: centos.yml
+=======
+ - include_tasks: ubuntu.yml
+   when: ansible_distribution == "Ubuntu"
+
+ - include_tasks: centos.yml
+>>>>>>> 88f211c06536e7c882c6c16543180f742af511f8
    when: ansible_distribution == "CentOS"

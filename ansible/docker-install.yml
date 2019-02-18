@@ -1,4 +1,9 @@
 - hosts: localhost
   become: yes
   roles:
+<<<<<<< HEAD
    - docker_install  
+=======
+   - docker_install
+  
+>>>>>>> 88f211c06536e7c882c6c16543180f742af511f8
