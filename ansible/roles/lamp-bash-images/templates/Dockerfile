@@ -1,6 +1,6 @@
 FROM    centos:7
 
-RUN sudo yum update
+RUN yum update
 RUN sudo yum install httpd -y
 RUN sudo service httpd start
 RUN sudo /sbin/chkconfig --levels 235 httpd on
