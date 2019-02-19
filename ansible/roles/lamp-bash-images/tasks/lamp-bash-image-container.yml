@@ -8,7 +8,7 @@
 
 #Build dockerfile using ansible
 - name: Build Docker file
-  shell: docker build -t lamp:latest .
+  shell: docker build -t lamp .
 
 # Login Docker hub
 - name: Log into DockerHub
