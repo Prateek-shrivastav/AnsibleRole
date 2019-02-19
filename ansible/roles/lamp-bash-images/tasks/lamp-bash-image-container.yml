@@ -1,10 +1,4 @@
-# Login Docker hub
-- name: Log into DockerHub
-  docker_login:
-    username: prateeksw05
-    password: pass1234
-    reauthorize: yes
-
+# Call Dockerfile
 - template:
     src: Dockerfile
     dest: /etc/lamp_image
@@ -12,34 +6,41 @@
     owner: root
     group: root    
 
-#run docker image a particular host
+#Build dockerfile using ansible
 - name: Build Docker file
-  shell:  docker build .
+  shell: docker build -t lamp:latest .
 
-#run docker image a particular host
-- name: Run Docker image
-  shell:  docker run -dp 8080:80 prateeksw05/nginx_image:latest
+# Login Docker hub
+- name: Log into DockerHub
+  docker_login:
+    username: prateeksw05
+    password: pass1234
+    reauthorize: yes
+
+# Run Docker image
+- name: Running the container
+  docker_container:
+    name: lamp
+    image: prateeksw05/lamp
+    state: started
+
+#   run docker image a particular host
+# - name: Run Docker image
+#   shell:  docker run -dp 80:80 prateeksw05/lamp:latest
 
 # push docker image Into docker hub
 - name: Tag and push to docker hub
   docker_image:
-    name: nginx_image
-    repository: prateek/nginx_image:latest
+    name: lamp
+    repository: prateek/lamp:latest
     push: yes
 
 # Pull Image from Docker hub
 - name: pull docker image
   docker_image:
-    name: prateeksw05/nginx_image
+    name: prateeksw05/lamp
     tag: latest
-
-# Run Docker image
-- name: Running the container
-  docker_container:
-    name: mynginx
-    image: prateeksw05/nginx_image
-    state: started
 
 #run docker image a particular host
 - name: Run Docker image
-  shell:  docker run -dp 8080:80 prateeksw05/nginx_image:latest
+  shell:  docker run -dp 8080:80 prateeksw05/lamp:latest
