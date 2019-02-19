@@ -1,10 +1,10 @@
 FROM    centos:7
 
 RUN yum update
-RUN sudo yum install httpd -y
-RUN sudo service httpd start
-RUN sudo /sbin/chkconfig --levels 235 httpd on
-RUN sudo yum install mysql-server
+RUN yum install httpd -y
+RUN service httpd start
+RUN /sbin/chkconfig --levels 235 httpd on
+RUN yum install mysql-server
 RUN sudo service mysqld start
 RUN sudo /sbin/chkconfig --levels 235 mysqld on
 RUN mysql_secure_installation
