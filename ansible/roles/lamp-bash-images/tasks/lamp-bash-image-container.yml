@@ -4,11 +4,12 @@
     dest: /etc/Dockerfile
     mode: 0644
     owner: root
-    group: root    
+    group: root
 
-#Build dockerfile using ansible
 - name: Build Docker file
   shell: docker build -t lamp:latest .
+  args:
+    chdir: /etc/
 
 # Login Docker hub
 - name: Log into DockerHub
@@ -17,30 +18,14 @@
     password: pass1234
     reauthorize: yes
 
-# Run Docker image
 - name: Running the container
   docker_container:
+    image: lamp:latest
     name: lamp
-    image: prateeksw05/lamp
     state: started
 
-#   run docker image a particular host
-# - name: Run Docker image
-#   shell:  docker run -dp 80:80 prateeksw05/lamp:latest
-
-# push docker image Into docker hub
-- name: Tag and push to docker hub
+- name: Push image into dokcer hub
   docker_image:
     name: lamp
-    repository: prateek/lamp:latest
+    repository: prateeksw05/lamp:latest
     push: yes
-
-# Pull Image from Docker hub
-- name: pull docker image
-  docker_image:
-    name: prateeksw05/lamp
-    tag: latest
-
-#run docker image a particular host
-- name: Run Docker image
-  shell:  docker run -dp 8080:80 prateeksw05/lamp:latest
