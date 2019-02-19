@@ -1,14 +1,14 @@
 # Call Dockerfile
 - template:
-    src: Dockerfile
-    dest: /etc/lamp_image
+    src: Dockerfile.j2
+    dest: /etc/Dockerfile
     mode: 0644
     owner: root
     group: root    
 
 #Build dockerfile using ansible
 - name: Build Docker file
-  shell: docker build -t /etc/lamp_image:latest .
+  shell: docker build -t lamp:latest .
 
 # Login Docker hub
 - name: Log into DockerHub
