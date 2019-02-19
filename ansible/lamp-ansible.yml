@@ -1,6 +1,5 @@
-
 - hosts: localhost
   become: yes
   roles:
-   - docker_install
+   - lamp-anshible
   

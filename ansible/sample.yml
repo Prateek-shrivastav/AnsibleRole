@@ -1,8 +1,6 @@
 
 - hosts: localhost
   become: yes
-  vars:
-    version: 150
   roles:
    # - lamp
    # - bash-install
@@ -10,3 +8,4 @@
    # - docker_container
    # - docker_service
    - tomcat
+   
