@@ -5,5 +5,6 @@ read a
 echo "Enter the second Number"
 read b
 x=$(($a+$b))
+Y=$'expr $a +$b'
+echo $y
 echo $x
-echo $ expr $a-$b
