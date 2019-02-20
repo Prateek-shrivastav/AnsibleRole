@@ -6,3 +6,4 @@ echo "Enter the second Number"
 read b
 x=$(($a+$b))
 echo $x
+echo $ expr $a-$b
